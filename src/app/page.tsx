@@ -19,18 +19,20 @@ export default async function Home() {
     <main className={styles.main}>
       <h1>Lista de Pokemons</h1>
       <section className={styles.pokemonList}>
-        {pokemons.map((pokemon: Pokemon) =>
-          {
+        {pokemons.map((pokemon: Pokemon) => {
             const id = pokemon.url.split('/')[6]
             return(
-              <div className={styles.pokemonItem} key={pokemon.name}>
-                <p className="styles pokemon">{("00" + id).slice(-3)}</p>
-                <p className="styles pokemon">{pokemon.name}</p>
-              </div>
+              <Link href={`/pokemon/${id}`}>
+                <div className={styles.pokemonItem} key={pokemon.name}>
+                  <p className="styles pokemon">{("00" + id).slice(-3)}</p>
+                  <p className="styles pokemon">{pokemon.name}</p>
+                </div>
+              </Link>
             )
           })
         }
       </section>
+
       <Link href='/about'>About</Link>
     </main>
   )
