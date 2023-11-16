@@ -18,7 +18,8 @@ type PokemonDetails = {
 }
 
 async function fetchPokemon(id:string) : Promise<PokemonDetails> {
-  const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, { next: { revalidate: 3600 } })
+  const api_url = process.env.NEXT_PUBLIC_API_URL_POKEMONS as string
+  const result = await fetch(`${api_url}/${id}`, { next: { revalidate: 3600 } })
   const jsonResult = await result.json()
   //
   return({
