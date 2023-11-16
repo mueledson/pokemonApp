@@ -7,6 +7,7 @@ type Pokemon = {
 }
 
 async function fetchPokemon(): Promise<Pokemon[]> {
+  const api_url = process.env.NEXT_PUBLIC_API_URL_POKEMONS as string
   const result = await fetch("https://pokeapi.co/api/v2/pokemon")
   const jsonResult = await result.json()
   return jsonResult.results
